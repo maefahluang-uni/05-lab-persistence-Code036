@@ -28,8 +28,7 @@ public class ConcertController {
 
     
     //TODO: add constructor with repository as a parameter
-    //ConcertRepository conRepo;
-public ConcertController(ConcertRepository repository) {
+    public ConcertController(ConcertRepository repository) {
     this.repository = repository;
 }
 

@@ -28,7 +28,6 @@
                     <td th:text="${concert.date}"></td>
                     <td>
                         <a class="btn btn-danger" th:href="@{/delete-concert/{id}(id=${concert.id})}">Delete</a>
-                        <a class="btn btn-primary" th:href="@{/concerts/{id}(id=${concert.id})}">Update</a>
                     </td>
                 </tr>
             </tbody>
