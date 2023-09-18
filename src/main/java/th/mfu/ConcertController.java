@@ -23,56 +23,71 @@ import th.mfu.domain.Concert;
 @Controller
 public class ConcertController {
     // TODO: define repository for concert and @Autowired
+    @Autowired
+    private ConcertRepository repository;
 
     
     //TODO: add constructor with repository as a parameter
+    //ConcertRepository conRepo;
 
 
     //TODO: add initBinder for date format
+    @InitBinder
+    public final void initBinderUsuariosFormValidator(final WebDataBinder binder, final Locale locale) {
+        final SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd", locale);
+        binder.registerCustomEditor(Date.class, new CustomDateEditor(dateFormat, true));
+    }
   
 
     @GetMapping("/concerts")
     public String listConcerts(Model model) {
         // TODO: list all concerts
+        model.addAttribute("concerts", repository.findAll());
         // TODO: return a template to list concerts
-        return "";
+        return "list-concert";
     }
 
     @GetMapping("/add-concert")
     public String addAConcertForm(Model model) {
         // TODO: pass blank concert to a form
+        model.addAttribute("concert", new Concert());
         // TODO: return a template for concert form
-        return "";
+        return "add-concert-form";
     }
 
     @GetMapping("/concerts/{id}")
     public String getConcert(Model model, @PathVariable Long id) {
         //TODO: find concert by id
+        Concert concert = repository.findById(id).get();
         // TODO: add concert to model
+        model.addAttribute("concert", concert);
         // TODO: return a template for concert form
-        return "";
+        return "add-concert-form";
     }
 
 
     @PostMapping("/concerts")
     public String saveConcert(@ModelAttribute Concert concert) {
         // TODO: add concert to DB
+        repository.save(concert);
         // TODO: redirect to list concerts
-        return "";
+        return "redirect:/concerts";
     }
 
     @GetMapping("/delete-concert/{id}")
     public String deleteConcert(@PathVariable long id) {
         // TODO: delete concert from DB
+        repository.deleteById(id);
         // TODO: redirect to list concerts
-        return "";
+        return "redirect:/concerts";
     }
 
     
     @GetMapping("/delete-concert")
     public String removeAllConcerts() {
         // delete all employees 
-        return "";
+        repository.deleteAll();
+        return "redirect:/concerts";
     }
 
 }

@@ -4,12 +4,38 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Concert List</title>
+    <!-- Include Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
 </head>
 <body>
-    <h1>Concert List</h1>
-    <a href="/add-concert/">Add Concert</a>
-    <!-- TODO: show delete link for each concert -->
+    <div class="container">
+        <h1>Concert List</h1>
+        <a class="btn btn-primary" href="/add-concert/">Add Concert</a>
+        
+        <!-- Concert Table (Assuming you have a list of concerts) -->
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Date</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="concert : ${concerts}">
+                    <td th:text="${concert.id}"></td>
+                    <td th:text="${concert.name}"></td>
+                    <td th:text="${concert.date}"></td>
+                    <td>
+                        <a class="btn btn-danger" th:href="@{/delete-concert/{id}(id=${concert.id})}">Delete</a>
+                        <a class="btn btn-primary" th:href="@{/concerts/{id}(id=${concert.id})}">Update</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
 
-    <!-- TODO: Add list of concerts -->
+    <!-- Include Bootstrap JS (optional) -->
 </body>
 </html>
+
