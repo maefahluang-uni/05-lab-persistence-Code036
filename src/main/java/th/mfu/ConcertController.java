@@ -29,7 +29,9 @@ public class ConcertController {
     
     //TODO: add constructor with repository as a parameter
     //ConcertRepository conRepo;
-
+public ConcertController(ConcertRepository repository) {
+    this.repository = repository;
+}
 
     //TODO: add initBinder for date format
     @InitBinder

@@ -17,7 +17,7 @@ public class Concert {
     // - name (String)
     // - date (Date)
     private Long id;
-    private String name;
+    private String title;
     private Date date; 
 
     //TODO: generate getter/setter for all attributes
@@ -33,13 +33,7 @@ public class Concert {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
+   
 
     public Date getDate() {
         return date;
@@ -47,6 +41,14 @@ public class Concert {
 
     public void setDate(Date date) {
         this.date = date;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
    
 

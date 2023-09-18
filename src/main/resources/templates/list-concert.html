@@ -17,14 +17,14 @@
             <thead>
                 <tr>
                     <th>ID</th>
-                    <th>Name</th>
+                    <th>Title</th>
                     <th>Date</th>
                 </tr>
             </thead>
             <tbody>
                 <tr th:each="concert : ${concerts}">
                     <td th:text="${concert.id}"></td>
-                    <td th:text="${concert.name}"></td>
+                    <td th:text="${concert.title}"></td>
                     <td th:text="${concert.date}"></td>
                     <td>
                         <a class="btn btn-danger" th:href="@{/delete-concert/{id}(id=${concert.id})}">Delete</a>
